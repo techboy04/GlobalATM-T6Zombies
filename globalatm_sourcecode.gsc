@@ -28,6 +28,7 @@ onPlayerSpawned()
 {
     self endon("disconnect");
 	level endon("game_ended");
+	self notifyonplayercommand("useatm", "+activate");
     for(;;)
     {
         self waittill("spawned_player");
@@ -54,13 +55,10 @@ spawnATMDeposit()
 		depositTrigger setHintString("^7Press ^3&&1 ^7to deposit ^31000 ^7to the global ATM (^3$" + level.globalpoints + "^7)");
 		if ( (i.score >= 1000) )
 		{
-			if ( i usebuttonpressed() )
-			{
-				i.score -= 1000;
-				i playsound ("zmb_weap_wall");
-				level.globalpoints += 1000;
-				wait 0.5;
-			}
+			i waittill("useatm");
+			i.score -= 1000;
+			i playsound ("zmb_weap_wall");
+			level.globalpoints += 1000;
 		}
 	}
 }
@@ -80,13 +78,10 @@ spawnATMWithdraw()
 		withdrawTrigger setHintString("^7Press ^3&&1 ^7to withdraw ^31000 ^7from the global ATM (^3$" + level.globalpoints + "^7)");
 		if ( (level.globalpoints >= 1000) && (level.globalpoints != 0) )
 		{
-			if ( i usebuttonpressed() )
-			{
-				i.score += 1000;
-				i playsound ("zmb_cha_ching");
-				level.globalpoints -= 1000;
-				wait 0.5;
-			}
+			i waittill("useatm");
+			i.score += 1000;
+			i playsound ("zmb_cha_ching");
+			level.globalpoints -= 1000;
 		}
 	}
 }
