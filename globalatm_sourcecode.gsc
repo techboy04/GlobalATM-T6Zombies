@@ -107,7 +107,7 @@ setatmlocation()
 		{
 			if(getDvar("ui_zm_mapstartlocation") == "town")
 			{
-				level.depositlocation = (750,434,-19); //Town
+				level.depositlocation = (801,76,-38); //Town
 				level.withdrawlocation = (643,23,-19);
 			}
 			else if (getDvar("ui_zm_mapstartlocation") == "transit")
