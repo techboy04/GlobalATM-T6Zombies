@@ -53,7 +53,7 @@ spawnATMDeposit()
 	{
 		depositTrigger waittill( "trigger", i );
 		depositTrigger setHintString("^7Press ^3&&1 ^7to deposit ^31000 ^7to the global ATM (^3$" + level.globalpoints + "^7)");
-		if ( (i.score >= 1000) )
+		if ( i istouching( depositTrigger ) && (i.score >= 1000) )
 		{
 			i waittill("useatm");
 			i.score -= 1000;
@@ -76,7 +76,7 @@ spawnATMWithdraw()
 	{
 		withdrawTrigger waittill( "trigger", i );
 		withdrawTrigger setHintString("^7Press ^3&&1 ^7to withdraw ^31000 ^7from the global ATM (^3$" + level.globalpoints + "^7)");
-		if ( (level.globalpoints >= 1000) && (level.globalpoints != 0) )
+		if ( i istouching(withdrawTrigger) && (level.globalpoints >= 1000) && (level.globalpoints != 0) )
 		{
 			i waittill("useatm");
 			i.score += 1000;
